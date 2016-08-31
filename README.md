@@ -1,12 +1,13 @@
-# Minimax AI wrapper
+# aipy -- Python artificial intelligence wrapper
+
 ## Purpose
-- The purpose of this package is to provide an easy and black-box API for creating
-minimax game AIs.
+- The purpose of this package is to provide an easy and black-box API for creating game AIs.
 
 ## Background
-- The minimax algorithm is a decision rule used in game AIs for computing the best
+- The Minimax Algorithm
+    - The minimax algorithm is a decision rule used in game AIs for computing the best
 possible move a player can take.
-- It is necessary to know 1) how to come up with a list of possible moves given
+    - It is necessary to know 1) how to come up with a list of possible moves given
 the current game state and 2) how to calculate a heuristic for any given game
 state.
 
