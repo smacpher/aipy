@@ -30,7 +30,7 @@ learning, neural-nets, etc.
 
 ## API
 
-import ai
+import aipy
 import Game
 import Player
 
@@ -48,7 +48,7 @@ def next_states(game_state, player):
 
 player = Player()
 \# Instantiate a new MinimaxAI object.
-AI = ai.MinimaxAI(depth=10, heuristic=heuristic, future_state_fn=next_states)
+AI = aipy.MinimaxAI(depth=10, heuristic=heuristic, future_state_fn=next_states)
 game_state = Game()
 
 
