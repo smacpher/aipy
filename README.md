@@ -31,39 +31,39 @@ learning, neural-nets, etc.
 
 ## API
 
-import aipy
-import Game
-import Player
+    import aipy
+    import Game
+    import Player
 
-\# Define your heuristic function.
-def heuristic(game_state):
-    return score(game_state)
+    # Define your heuristic function.
+    def heuristic(game_state):
+        return score(game_state)
 
-\# Define your future state calculating function.
-def next_states(game_state, player):
-    possible_states = []
-    for state in get_possible_states(game_state, player):
-        possible_states.append(state)
-    return possible_states
-
-
-player = Player()
-\# Instantiate a new MinimaxAI object.
-AI = aipy.MinimaxAI(depth=10, heuristic=heuristic, future_state_fn=next_states)
-game_state = Game()
+    # Define your future state calculating function.
+    def next_states(game_state, player):
+        possible_states = []
+        for state in get_possible_states(game_state, player):
+            possible_states.append(state)
+        return possible_states
 
 
-def main():
-    while not is_end_state(game_state):
-        if turn == player:
-            move = player.get_move()
-            new_state = update_game_state(game_state, move)
-        elif turn == AI:
-            move = AI.get_move()
-            new_state = update_game_state(game_state, move)
+    player = Player()
+    # Instantiate a new MinimaxAI object.
+    AI = aipy.MinimaxAI(depth=10, heuristic=heuristic, future_state_fn=next_states)
+    game_state = Game()
 
-    print 'GAME OVER!'
 
-if __name__ == '__main__':
-    main()
+    def main():
+        while not is_end_state(game_state):
+            if turn == player:
+                move = player.get_move()
+                new_state = update_game_state(game_state, move)
+            elif turn == AI:
+                move = AI.get_move()
+                new_state = update_game_state(game_state, move)
+
+        print 'GAME OVER!'
+
+    if __name__ == '__main__':
+        main()
 
