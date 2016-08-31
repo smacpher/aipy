@@ -13,7 +13,7 @@ state.
 
 ## Usage
 - The package can be applied to any 'perfect information' game, or a game in
-which it is possible to see all possible moves.
+which it is possible to compute all possible moves.
     -  An example of a perfect information game is tic-tac-toe since it is
     possible to know all of the possible moves based off a given game state.
     -  An example of a game that wouldn't be considered a perfect information
