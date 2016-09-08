@@ -1,7 +1,7 @@
 # aipy -- Python artificial intelligence wrapper
 
 ## Purpose
-- The purpose of this package is to provide an easy and black-box API for creating game AIs.
+- The purpose of this package is to provide an easy, black-box API for creating game AIs.
 
 ## Background
 - The Minimax Algorithm

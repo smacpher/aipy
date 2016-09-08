@@ -1,8 +1,9 @@
-from aipy.base_ai import BaseAi
+from aipy.ai.core import BaseAI
+from aipy.utils.type_utils import is_function
 
 
-class MinimaxAi(BaseAi):
-    """The MinimaxAi class. Implements the minimax algorithm to compute
+class MinimaxAI(BaseAI):
+    """The MinimaxAI class. Implements the minimax algorithm to compute
     the best possible move.  See the 'compute' method for the actual
     minimax algorithm.
     
@@ -14,18 +15,15 @@ class MinimaxAi(BaseAi):
         self.depth = depth
 
         # Verify attribute types.
-        if self._is_function(heuristic_fn):
+        if is_function(heuristic_fn):
             self.heuristic_fn = heuristic_fn
         else:
             raise ValueError('heuristic_fn needs to be a function.')
 
-        if self._is_function(state_fn):
+        if is_function(state_fn):
             self.state_fn = state_fn
         else:
             raise ValueError('state_fn needs to be a function.')
-
-    def _is_function(self, fn):
-        return hasattr(fn, '__call__')
 
     def compute(self, state):
         """Serves as a wrapper for the core minimax algorithm.  The best move --
@@ -34,6 +32,7 @@ class MinimaxAi(BaseAi):
         the 'nonlocal' identifier.
         """
         depth = self.depth
+        
         choice = None
         state_fn = self.state_fn
         heuristic_fn = self.heuristic_fn
@@ -75,7 +74,7 @@ class MinimaxAi(BaseAi):
                     choice = states[min_score_index]
                     return scores[min_score_index]
         
-        # Call minimax to update 'choice'.
+        # Call minimax to update 'choice' variable.
         _minimax(state, max_player=True, depth=depth)
         return choice
 

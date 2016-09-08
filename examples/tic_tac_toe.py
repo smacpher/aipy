@@ -1,6 +1,6 @@
 import copy
 
-from aipy.minimax_ai import MinimaxAi
+from aipy.ai.minimax_ai import MinimaxAI
 
 
 def get_score(game_state, max_player):
@@ -104,13 +104,12 @@ def get_possible_states(state, player):
 
 
 
-
 state = [[None, None, None],
          [None, None, None],
          [None, None, None]]
 
 
-ai = MinimaxAi(heuristic_fn=get_score,
+ai = MinimaxAI(heuristic_fn=get_score,
                state_fn=get_possible_states)
 
 choice = ai.compute(state=state)
