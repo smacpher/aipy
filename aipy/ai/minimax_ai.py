@@ -46,11 +46,9 @@ class MinimaxAI(BaseAI):
             nonlocal state_fn
             nonlocal heuristic_fn
 
-            # Base case.
             score = heuristic_fn(state, not max_player)
-
-            # If score is None, then the game is not in an end state. 
-            if score or depth == 0:
+            # If score is not None, then the game is in an end state. 
+            if score is not None or depth == 0:
                 return score
             else:
                 states = []
@@ -61,6 +59,7 @@ class MinimaxAI(BaseAI):
                     score = _minimax(child_state, not max_player, depth - 1)
                     scores.append(score)
                     states.append(child_state)
+                    
 
                 #  Based on the player, choose the best move.
                 if max_player:

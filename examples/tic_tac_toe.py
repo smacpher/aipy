@@ -57,11 +57,11 @@ def _check_win_from_cell(game_state, start_row, start_col, player):
             # valid direction
             else:
                 if (_check_win_from_cell_in_dir(game_state,
-                                               start_row,
-                                               start_col,
-                                               d_row,
-                                               d_col,
-                                               player)):
+                                                start_row,
+                                                start_col,
+                                                d_row,
+                                                d_col,
+                                                player)):
                     return True
     return False
 
@@ -76,7 +76,7 @@ def _check_win_from_cell_in_dir(game_state, start_row, start_col, d_row, d_col, 
     return True
 
 
-def is_valid_move(state, move):
+def _is_valid_move(state, move):
     """
     Returns True if a move (represented by a '(row, col)' tuple) is valid.
     """
@@ -96,7 +96,7 @@ def get_possible_states(state, player):
     possible_game_states = []
     for row in range(rows):
         for col in range(cols):
-            if is_valid_move(state, (row, col)):
+            if _is_valid_move(state, (row, col)):
                 temp_state = copy.deepcopy(state)
                 temp_state[row][col] = player
                 possible_game_states.append(temp_state)
@@ -104,10 +104,11 @@ def get_possible_states(state, player):
 
 
 
-state = [[None, None, None],
-         [None, None, None],
-         [None, None, None]]
+state = [[True, False, True],
+         [False, True, None],
+         [False, False, None]]
 
+# print(get_score(state, max_player=True))
 
 ai = MinimaxAI(heuristic_fn=get_score,
                state_fn=get_possible_states)
