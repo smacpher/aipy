@@ -6,14 +6,18 @@ class MinimaxAI(BaseAI):
     """The MinimaxAI class. Implements the minimax algorithm to compute
     the best possible move.  See the 'compute' method for the actual
     minimax algorithm.
-    
+
     Args:
+        heuristic_fn (fn): A function to calculate the heuristic of a given
+            game state.
+        state_fn (fn): A function to calculate the possible child states of
+            a given game state.
         depth (int): The maximum recursive depth the minimax algorithm can
             hit before returning a game state's heuristic.
     """
+
     def __init__(self, heuristic_fn, state_fn, depth=100):
         self.depth = depth
-
         # Verify attribute types.
         if is_function(heuristic_fn):
             self.heuristic_fn = heuristic_fn
@@ -46,21 +50,26 @@ class MinimaxAI(BaseAI):
             nonlocal state_fn
             nonlocal heuristic_fn
 
-            score = heuristic_fn(state, not max_player)
+            is_end_state = heuristic_fn(state, max_player)
             # If score is not None, then the game is in an end state. 
-            if score is not None or depth == 0:
+            if is_end_state is not None or depth == 0:
+                score = heuristic_fn(state, not max_player)
+                # if depth == 99:
+                #     print(state, score)
                 return score
             else:
                 states = []
                 scores = []
 
-                # Populate moves and scores.
+                # Populate states and scores.
                 for child_state in state_fn(state, max_player):
                     score = _minimax(child_state, not max_player, depth - 1)
                     scores.append(score)
                     states.append(child_state)
-                    
 
+                # if depth == 100:
+                #     print("States", states)
+                #     print("Scores", scores)
                 #  Based on the player, choose the best move.
                 if max_player:
                     #  We want to maximize AI's score.

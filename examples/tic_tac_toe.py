@@ -9,8 +9,7 @@ def get_score(game_state, max_player):
         return 10
     elif check_win(game_state, not max_player):
         return -10
-    # tie
-    elif no_more_moves(game_state):
+    elif no_more_moves(game_state):  # tie
         return 0
     else:  # not an end state
         return None
@@ -103,9 +102,16 @@ def get_possible_states(state, player):
     return possible_game_states
 
 
+def pprint_list(a):
+    for elem in a:
+        print(elem)
+        print('\n')
+
 
 state = [[True, False, True],
-         [False, True, None],
+
+         [None, True, None],
+
          [False, False, None]]
 
 # print(get_score(state, max_player=True))
@@ -115,6 +121,10 @@ ai = MinimaxAI(heuristic_fn=get_score,
 
 choice = ai.compute(state=state)
 
-print (choice)
+pprint_list(choice)
+
+a = [[True, False, True],
+     [None, True, None],
+     [False, False, True]]
 
 
